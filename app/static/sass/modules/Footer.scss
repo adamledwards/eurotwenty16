@@ -1,0 +1,40 @@
+.Footer {
+	padding: 75px 0;
+	background: $black;
+	color: $white;
+	font-size: 14px;
+	line-height: 1.42;
+	a {
+		color: $white;
+		text-decoration: none;
+	}
+	p {
+		margin: 0
+	}
+}
+
+.Footer-logo {
+	display: block;
+	margin-bottom: 20px;
+	span {
+		vertical-align: middle;
+		display: inline-block;
+	}
+	img {
+		display: inline-block;
+		vertical-align: middle;
+		margin-left: 2px;
+		width: 125px;
+	}
+}
+
+@media (min-width: $screen-sm-min) {
+	.Footer-credits {
+		float: right;
+	}
+
+	.Footer p {
+			margin: 0;
+    		margin-top: -0.5em;
+	}
+}

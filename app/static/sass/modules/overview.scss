@@ -1,0 +1,177 @@
+.Overview {
+	padding: 100px 0;
+	min-height: 600px;
+	background: $black;
+	overflow: hidden;
+
+	color: $white;
+}
+
+.Overview--teamSelected {
+	text-align: left;
+	line-height: 1.5;
+	font-size: 15px;
+
+	h2 {
+		font-size: 36px;
+		-webkit-font-smoothing: antialiased;
+	}
+
+	dd,dl,dt {
+		margin: 0;
+	}
+
+	dl,li {
+		margin-top: 20px
+	}
+	dt {
+		-webkit-font-smoothing: antialiased;
+		font-weight: 600;
+	}
+}
+.Overview-players-header {
+	font-size: 19px;
+	margin: 0;
+	padding: 30px 0;
+	position: relative;
+	-webkit-font-smoothing: antialiased;
+
+}
+.Overview-players {
+	text-align: center;
+	border-bottom: 1px currentColor solid;
+	dt {
+		&:after{
+			content: "\2014";
+			display: block;
+			font-weight: 300;
+
+		}
+	}
+	ul {
+		margin: 0;
+		padding: 0 0 25px 0;
+		display: none;
+	}
+
+	li {
+		list-style: none;
+	}
+
+}
+
+.Overview-arrow {
+
+}
+
+@mixin line {
+  display: block;
+  background: currentColor;
+  width: 14px;
+  height: 1px;
+  left: 0;
+  bottom: 0;
+  transform-origin: 50% 50%;
+  transition: all 200ms ease;
+}
+
+.arrow {
+	position: absolute;
+	display: block;
+	height: 14px;
+	width: 14px;
+	top: 50%;
+	transform: translateY(-50%);
+	right: 10px;
+  span:nth-of-type(1) {
+    &:before {
+      position: absolute;
+      transform: rotate(-40deg) scale(0.5, 1) translateX(50%);
+      @include line;
+      content: '';
+    }
+    &:after {
+      position: absolute;
+      transform: rotate(40deg) scale(0.5, 1) translateX(-50%);
+      @include line;
+      content: '';
+    }
+  }
+}
+
+.arrow {
+	span:nth-of-type(2) {
+	  display: block;
+	  background: currentColor;
+	  width: 1px;
+	  height: 14px;
+	  top: -1px;
+	  position: absolute;
+	  left: 50%;
+	  transform: translateX(-50%);
+	  transition: all 200ms ease;
+	}
+}
+.Table .arrow {
+	width: 14px;
+}
+.Table--selected  .arrow,
+.arrow-active  .arrow {
+  span:nth-of-type(2) {
+    opacity: 1;
+    transform: scale(1, 0);
+
+  }
+  span:nth-of-type(1) {
+    &:before {
+      bottom: 50%;
+      transform: rotate(-45deg) scale(1, 1) translate(0);
+      content: '';
+    }
+    &:after {
+      bottom: 50%;
+      transform: rotate(45deg) scale(1, 1) translate(0);
+      content: '';
+    }
+  }
+}
+@media (min-width: $screen-sm-min) {
+	.Overview {
+		padding: 150px 0;
+		.arrow {
+			display: none;
+		}
+	}
+	.Overview-players {
+		text-align: left;
+		font-size: 15px;
+		line-height: 1.46;
+		border-bottom: none;
+
+		ul {
+			display: block;
+		}
+
+		li {
+			margin: 0;
+		}
+
+	}
+
+	.Overview-players-header {
+		font-weight: 600;
+		font-size: 15px;
+		margin: 0;
+		padding: 0;
+		-webkit-font-smoothing: antialiased;
+
+		&:after {
+		    display: block;
+		    margin: 16px 0;
+		    width: 8%;
+		    height: 1px;
+		    background: currentColor;
+		    content: '';
+		}
+	}
+}

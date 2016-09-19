@@ -1,0 +1,22 @@
+
+.TeamDetail-header {
+    text-align: center;
+    line-height: 1.25;
+    -webkit-font-smoothing: antialiased;
+}
+
+@media (min-width: $screen-sm-min) {
+    .TeamDetail-header {
+        display: inline-block;
+        position: relative;
+
+        &:after {
+            display: block;
+            margin: 50px 0;
+            line-height: 1px;
+            text-align: left;
+            content: "\2014";
+            font-size: 20px;
+        }
+    }
+}

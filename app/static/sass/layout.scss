@@ -1,0 +1,54 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	background: #222;
+
+}
+
+.Top {
+	position: relative;
+	text-align: center;
+	top: 100px;
+
+	h1 {
+		margin-bottom: 50px;
+		-webkit-font-smoothing: antialiased;
+	}
+}
+
+.body {
+	transition: transform 300ms ease;
+}
+.AppState-Modalactive {
+	transform: scale(0.95);
+}
+
+.show-xs {
+	display: inline;
+}
+.hide-xs {
+	display: none;
+}
+
+.hide-xs-block {
+	display: none;
+}
+@media (min-width: $screen-sm-min) {
+	.Top {
+		top: 0;
+	}
+	.hide-xs {
+		display: inline;
+	}
+
+	.hide-xs-block {
+		display: block;
+	}
+	.show-xs {
+		display: none;
+	}
+}

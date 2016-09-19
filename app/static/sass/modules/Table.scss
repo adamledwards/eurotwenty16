@@ -1,0 +1,94 @@
+
+.GroupList {
+    @include clearfix;
+    padding: 50px 0 10px;
+    font-size: 16px;
+    background-color: #f4f4f4;
+
+    h2 {
+        padding: 0 0 30px 0;
+        margin: 0
+    }
+}
+
+.GroupList--teamSelected {
+    .Table.Table--selected {
+        opacity: 1;
+    }
+    .Table {
+        opacity: 0.3;
+    }
+
+}
+
+.Table {
+    width: 100%;
+    padding: 0;
+    transition: opacity 300ms ease;
+    h3 {
+        position: relative;
+        border-top: currentColor 1px solid;
+        margin: 0 0 30px 0;
+        font-size: 19px;
+        text-align: center;
+        margin: 0;
+        padding: 30px 0;
+    }
+    &:first-of-type {
+        h3 {
+            border-top: none;
+        }
+    }
+}
+
+.Table-group {
+    width: 100%;
+    color: currentColor;
+
+    table {
+        width: 100%;
+    }
+
+    td {
+        text-align: center;
+    }
+    .group-team {
+        width: 60%;
+        text-align: left;
+    }
+
+}
+
+.Table-wrapper {
+    display: none;
+    padding-bottom: 20px;
+}
+@media (min-width: $screen-sm-min) {
+    .Table {
+        padding-top: 50px;
+        width: 33.333%;
+        float: left;
+        padding: 0px 7.5px;
+
+        h3 {
+            text-align: left;
+            border-top: none;
+            border-bottom: currentColor 1px solid;
+        }
+        .arrow {
+            display: none;
+        }
+    }
+
+
+    .GroupList {
+        padding: 50px 0;
+        h2 {
+            padding: 10px 0 20px;
+        }
+    }
+    .Table-wrapper {
+        display: block !important;
+        padding-top: 26;
+    }
+}

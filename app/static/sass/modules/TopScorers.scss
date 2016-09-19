@@ -1,0 +1,42 @@
+.TopScorers {
+	background-color: #e2e2e2;
+	padding: 50px 0;
+	h2 {
+		position: relative;
+		margin: 0;
+		line-height: 1;
+		cursor: pointer;
+	}
+}
+
+.TopScorers-list {
+	padding: 0;
+	margin: 0;
+
+	list-style: none;
+
+	li {
+		margin-top: 20px;
+		line-height: 1.66;
+		font-size: 15px;
+		will-change: opacity, transform;
+	}
+}
+
+@media (min-width: $screen-sm-min) {
+	.TopScorers {
+		padding: 50px 0;
+		h2 {
+			padding: 10px 0;
+			margin: 0;
+		}
+	}
+	.TopScorers-list {
+		padding: 55px 0 50px;
+		li {
+			font-size: 16px;
+			margin-top: 20px;
+		}
+	}
+
+}

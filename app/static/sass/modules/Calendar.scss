@@ -1,0 +1,127 @@
+
+.Calendar-row {
+
+    will-change: transform;
+    transition: transform 300ms ease;
+    background: #ffffff;
+    position: relative;
+    z-index: 1;
+
+    &.cr-4 {
+      padding-bottom: 50px;
+  }
+}
+
+.js-slideDown {
+    margin-top: -50px;
+}
+.Footer {
+    margin-top: 0;
+}
+.Calendar-row {
+    .container .flex{
+        display: flex;
+        flex-direction: row;
+         flex-wrap: nowrap;
+
+         border-bottom: 1px solid currentColor;
+    }
+
+    &:first-of-type {
+        .container .flex{
+            border-bottom: none;
+        }
+    }
+
+    &.cr-4 {
+        .container .flex{
+            border-bottom: none;
+        }
+    }
+}
+
+.js-slideDown {
+    will-change: transform;
+    transition: transform 300ms ease;
+}
+
+.Calendar {
+    width: calc(100% * 1/7);
+	padding: 25px 7.5px;
+	min-height: 90px;
+
+    transition: opacity 300ms ease;
+
+    .MatchList--teamSelected & {
+        //opacity: 0.3;
+        .Calendar-date,
+        .MatchItem {
+            opacity: 0.3;
+        }
+    }
+
+    &.Calendar--matchday  {
+        opacity: 1;
+
+        .MatchItem {
+            opacity: 0.3;
+        }
+        .Calendar-date {
+            opacity: 1;
+        }
+        .MatchItem--isPlaying {
+            opacity: 1;
+        }
+    }
+
+    &.active {
+        will-change:margin;
+        transition: opacity 300ms ease;
+        margin-bottom: 300px;
+    }
+}
+
+.Calendar--nogames {
+    opacity: 0.3;
+}
+
+.Calendar-spacer {
+    width: 100%;
+    height: 0;
+    position: absolute;
+    bottom: 0;
+}
+
+
+@media (min-width: $screen-sm-min) {
+    .Calendar-row {
+        .container .flex{
+            border-bottom: none;
+        }
+    }
+    .Calendar {
+        padding: 37.5px 7.5px;
+    }
+    
+    .Calendar-date {
+        &:after {
+            display: block;
+            margin: 15px 0;
+            width: 15%;
+            height: 1px;
+            background: currentColor;
+            content: '';
+        }
+    }
+}
+
+@media (min-width: $screen-md-min) {
+	.Calendar-date {
+		font-size: 36px;
+        display: block;
+        &:after {
+            margin: 31px 0;
+        }
+
+	}
+}

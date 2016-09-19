@@ -1,0 +1,62 @@
+.TodaysFixtures {
+
+    h2 {
+        margin-top: 50px;
+    }
+
+    .MatchItem {
+        text-align: center;
+        margin-top: 50px;
+        padding-bottom: 50px;
+        border-bottom: 1px solid #464646;
+        &:last-of-type{
+            border-bottom: none;
+        }
+
+    }
+    .MatchItem-game {
+        font-size: 19px;
+        font-weight: 300;
+        margin-bottom: 0.75em;
+    }
+
+    .MatchItem-start {
+        text-align: center;
+        font-size: 13px;
+        margin-bottom: 0;
+    }
+}
+
+.TodaysFixtures-top {
+    color: #ffffff;
+    background: #212121;
+    padding-bottom: 0px;
+}
+
+
+@media (min-width: $screen-sm-min) {
+    .TodaysFixtures-flex {
+        display: flex;
+    }
+    .TodaysFixtures {
+        h2 {
+            margin-bottom: 50px;
+        }
+        .MatchItem-game {
+            font-size: 19px;
+        }
+        .MatchItem-start {
+            font-size: 12px;
+            line-height: 1.4;
+        }
+        .MatchItem {
+            flex: 1;
+            border-bottom: none;
+        }
+    }
+
+    .TodaysFixtures-top {
+        padding-bottom: 100px;
+    }
+
+}

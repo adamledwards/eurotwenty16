@@ -1,0 +1,141 @@
+.MatchList{
+    @include clearfix;
+    margin-top: 50px;
+    position: relative;
+}
+
+.MatchList-container {
+    background: #ffffff;
+    position: relative;
+    padding-top: 50px;
+    padding-bottom: 50px;
+
+}
+
+.MatchList-header {
+
+    padding: 10px 0;
+    @include clearfix;
+}
+
+.MatchList-title {
+    display: block;
+    font-size: 22px;
+    line-height: 1.33;
+}
+
+.MatchList-date {
+    display: block;
+    font-size: 17px;
+    opacity: 0.8;
+    line-height: 1.33;
+}
+
+.MatchItem {
+    display: block;
+    margin-top: 20px;
+    color: currentColor;
+    text-decoration: none;
+    .Calendar & {
+        @media (max-width: $screen-xs-max) {
+
+            background: currentColor;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+        }
+    }
+}
+
+.MatchList-dayHeader-item {
+    width: calc(100% * 1/7);
+    padding: 0 7.5px;
+    font-size: 20px;
+
+    &:after {
+        display: block;
+        padding-top: 10px;
+        border-bottom: 1px solid currentColor;
+        content: '';
+    }
+
+}
+
+.MatchItem-game {
+    display: block;
+    position: relative;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 18px;
+
+
+}
+
+
+
+.MatchItem-start {
+    display: block;
+
+    font-size: 12px;
+    line-height: 18px;
+}
+
+.MatchItem-copy {
+    .Calendar & {
+        display: none;
+    }
+}
+
+@media (min-width: $screen-sm-min) {
+    .MatchList{
+        margin-top: 100px;
+    }
+    .MatchList {
+        .MatchItem-game {
+            display: block;
+
+        }
+        // .MatchItem-game:after {
+        //     content: '';
+        //     display: block;
+        //     position: relative;
+        //     height: 1px;
+        //     width: 0;
+        //     background-color: currentColor;
+        //     bottom: 0px;
+        //     left: 0;
+        //     transition: width 300ms ease;
+        //     background-image: linear-gradient(currentColor, currentColor);
+        //
+        //}
+        .MatchItem {
+            transition: opacity 300ms ease;
+        }
+        .MatchItem:hover{
+            opacity: 1 !important;
+            .MatchItem-game:after {
+                width: 100%;
+            }
+        }
+    }
+
+    .MatchItem-copy {
+        .Calendar & {
+            display: block;
+        }
+    }
+    .MatchList-dayHeader-item {
+
+        font-size: 20px;
+    }
+    .MatchList-title {
+        float: left;
+        font-size: 25px;
+    }
+
+    .MatchList-date {
+        float: right;
+        font-size: 25px;
+        opacity: 1;
+    }
+}

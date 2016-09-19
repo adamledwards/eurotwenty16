@@ -1,0 +1,258 @@
+.MatchDetail {
+    left: 0;
+    width: 100%;
+
+    color: #000;
+    overflow: hidden;
+    will-change: opacity, transform;
+    .MatchItem.MatchDetail-item {
+        border-color: currentColor;
+    }
+
+}
+
+.MatchDetail-wrapper {
+    background: #f8f8f8;
+}
+
+
+.MatchDetail--interactive {
+    position: absolute;
+    top: 0;
+}
+
+.MatchDetail-container {
+    position: relative;
+}
+
+
+.MatchDetail-legend {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 10px;
+
+    li {
+        margin: 10px 0;
+        list-style: none;
+    }
+}
+
+.MatchDetail-score {
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    font-weight: 600;
+    line-height: 1.48;
+
+}
+.MatchDetail-stadium {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.3;
+    font-weight: 300;
+
+    -webkit-font-smoothing: antialiased;
+}
+
+.MatchDetail-scoreboard {
+    height: 300px;
+    position: relative;
+
+}
+
+
+
+.MatchDetail-close {
+	display: block;
+	width: 17px;
+	height: 17px;
+	position: absolute;
+    top: 25px;
+    right: 10px;
+	-webkit-transform: rotate(0deg);
+	-moz-transform: rotate(0deg);
+	-o-transform: rotate(0deg);
+	transform: rotate(0deg);
+	-webkit-transition: .5s ease-in-out;
+	-moz-transition: .5s ease-in-out;
+	-o-transition: .5s ease-in-out;
+	transition: .5s ease-in-out;
+	cursor: pointer;
+	float: right;
+	color: currentColor;
+    z-index: 1;
+}
+
+.MatchDetail-close span {
+  display: block;
+  position: absolute;
+  height: 1px;
+  width: 100%;
+  background: currentColor;
+  opacity: 1;
+  left: 0;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: transform .25s ease-in-out;
+  -moz-transition: transform .25s ease-in-out;
+  -o-transition: transform .25s ease-in-out;
+  transition: transform .25s ease-in-out;
+}
+
+.MatchDetail-close span:nth-child(1) {
+  top: 8px;
+  -webkit-transform: rotate(135deg);
+  -moz-transform: rotate(135deg);
+  -o-transform: rotate(135deg);
+  transform: rotate(135deg);
+}
+
+
+.MatchDetail-close span:nth-child(2) {
+  top: 8px;
+  -webkit-transform: rotate(-135deg);
+  -moz-transform: rotate(-135deg);
+  -o-transform: rotate(-135deg);
+  transform: rotate(-135deg);
+}
+
+
+.MatchDetail-stat {
+    display: none;
+}
+
+@media (min-width: $screen-sm-min) {
+    .MatchDetail-stat {
+        display: block;
+    }
+    .MatchDetail-stat {
+        margin-top: 25px;
+    }
+    .MatchDetail-container {
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+
+    .MatchDetail-statsWrapper{
+        margin-top: 75px;
+    }
+
+
+    .MatchDetail-stat-item {
+        font-size: 14px;
+        svg {
+            width: 80%;
+            height: 120px;
+            margin: 0 auto;
+            display: block;
+            text {
+                font-family: 'Open Sans';
+                fill: currentColor;
+            }
+            line, path, rect, polyline, circle {
+                stroke:currentColor;
+            }
+        }
+    }
+
+
+    .MatchDetail-stat-item--offsides {
+        svg {
+            width: 65%;
+        }
+    }
+
+
+    .MatchDetail-stat-item--goal {
+        svg {
+            width: 65%;
+        }
+
+        path {
+            fill: currentColor;
+        }
+    }
+
+    .MatchDetail-stat-item--shotsOnTarget {
+        svg {
+            width: 75%;
+        }
+    }
+
+
+    .MatchDetail-stat-item--shotsOffTarget {
+        svg {
+            width: 90%;
+        }
+        circle {
+            fill: currentColor;
+        }
+    }
+    .MatchDetail-stat-item--cards {
+        svg {
+            width: 35%;
+
+        }
+    }
+    .MatchDetail-stat-title {
+        margin-bottom: 1em;
+        margin-top: 50px;
+        display: block;
+        font-weight: 600;
+    }
+
+    .MatchDetail-stat-value {
+        float: right;
+    }
+
+}
+
+.MatchDetail-penalty {
+    display: block;
+    margin: 1em 0;
+    font-weight: 300;
+}
+
+@media (min-width: $screen-sm-min) {
+    .MatchDetail-penalty {
+        font-weight: 600;
+    }
+}
+@media (min-width: $screen-md-min) {
+
+    .MatchDetail-penalty {
+        font-weight: 600;
+    }
+
+    .MatchDetail-score {
+        font-size: 25px;
+        margin-bottom: 0.2em;
+    }
+
+    .MatchDetail-close {
+        top: 50px;
+        right: 0;
+    }
+    .MatchDetail-padding {
+        padding: 37.5px 0;
+        background-color: #ffffff;
+        .calendar-27 & {
+            padding: 0;
+        }
+
+    }
+
+
+    .MatchDetail-container{
+        padding-top: 100px;
+        padding-bottom: 100px;
+    }
+    .MatchDetail-stadium {
+        font-size: 16px;
+    }
+
+}

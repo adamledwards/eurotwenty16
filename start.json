@@ -1,0 +1,10 @@
+[{
+  "name"      : "eurotwenty16",
+  "script"    : "/eurotwenty16/www/eurotwenty16/app/index.js",
+  "args"      : "['--production']"
+},
+{
+  "name"      : "kue",
+  "script"    : "//eurotwenty16/www/eurotwenty16/task/index.js",
+  "args"      : "['--production']"
+}]
