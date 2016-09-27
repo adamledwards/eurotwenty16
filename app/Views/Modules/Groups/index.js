@@ -8,9 +8,9 @@ import { connect } from 'react-redux'
 
 const mapStateToProps = (state) => {
   return {
-    groups: state.get('app:groups'),
-    userteam: state.get('user:team'),
-    isMobile: state.get('app:isMobile')
+      groups: state.get('app:groups'),
+      userteam: state.get('user:team'),
+      isMobile: state.get('app:isMobile')
   }
 }
 

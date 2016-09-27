@@ -30,25 +30,24 @@ class Table extends Component {
         this.$els = $(element);
 
         this.$els.on('click','.js-slide',function() {
+            $(element).not(this).parent().find(".toggle-active")
+                .slideToggle(300,function() {
+                    $(this).removeClass('toggle-active');
+                });
 
-                $(element).not(this).parent().find(".toggle-active")
-                    .slideToggle(300,function() {
-                        $(this).removeClass('toggle-active');
-                    });
+                var $table = $(this).parent('.Table');
+                $('.Table').not($table).removeClass("Table--selected");
 
-                    var $table = $(this).parent('.Table');
-                    $('.Table').not($table).removeClass("Table--selected");
+                if($table.hasClass("Table--selected")){
+                    $table.removeClass("Table--selected");
+                }else{
+                    $table.addClass("Table--selected");
+                };
 
-                    if($table.hasClass("Table--selected")){
-                        $table.removeClass("Table--selected");
-                    }else{
-                        $table.addClass("Table--selected");
-                    };
+                $(this).next().not('.toggle-active').slideToggle( 300, function() {
 
-                    $(this).next().not('.toggle-active').slideToggle( 300, function() {
-
-                        $(this).addClass('toggle-active');
-                    });
+                    $(this).addClass('toggle-active');
+                });
 
         });
 
@@ -61,7 +60,7 @@ class Table extends Component {
         }
 
         var element = this.refs.element;
-        console.log(element);
+
         this.$els = $(element);
 
         if(!this.teamInGroup()) {

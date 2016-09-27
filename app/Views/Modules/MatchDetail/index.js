@@ -8,11 +8,11 @@ import prefix from 'react-prefixr';
 
 const mapStateToProps = (state) => {
   return {
-    usermatch: state.get('user:match'),
-    matches: state.get('app:matches'),
-    teams: state.get('app:teams'),
-    userteam: state.get('user:team'),
-    isMobile: state.get('app:isMobile')
+      usermatch: state.get('user:match'),
+      matches: state.get('app:matches'),
+      teams: state.get('app:teams'),
+      userteam: state.get('user:team'),
+      isMobile: state.get('app:isMobile')
 
   }
 }
@@ -20,7 +20,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchMatch: (dbid) => {
-      dispatch(fetchMatch(dbid))
+        dispatch(fetchMatch(dbid))
     },
     clearMatch: () => {
         $('.js-slideDown').css(prefix({transform:'translateY(0px)'}));
