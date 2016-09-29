@@ -8,7 +8,7 @@ import prefix from 'react-prefixr';
 
 class TeamLineUp extends Component {
 
-    constructor (props) {
+    constructor(props) {
         super(props)
 		if(props.animationDone){
             this.state = {opacity:1, y:0};
@@ -19,13 +19,13 @@ class TeamLineUp extends Component {
 		this.getStyles = this.getStyles.bind(this);
     }
 
-	componentWillReceiveProps(nextProps){
+	componentWillReceiveProps(nextProps) {
 		if(nextProps.animationDone){
             this.setState({opacity:1, y:0});
         };
 	}
 
-	getStyles (prevStyles) {
+	getStyles(prevStyles) {
 		return prevStyles.map((_, i) => {
 			 if(i === 0){
 				 return {
@@ -40,7 +40,7 @@ class TeamLineUp extends Component {
 		});
 	}
 
-	render () {
+    render() {
 			const { name, players, lineup, substitutions, cards} = this.props;
 			let type = "Team";
 			let  teamPlayers = players;

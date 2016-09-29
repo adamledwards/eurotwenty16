@@ -21,7 +21,7 @@ var queue = kue.createQueue({
 })
 
 var slack = {
-    url:"https://hooks.slack.com/services/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",
+    url: "https://hooks.slack.com/services/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",
     method: "POST"
 };
 
@@ -37,7 +37,9 @@ function sendPush(sid) {
             'content-type': 'application/json',
             'authorization': 'key=AIzaSyBpwbgjlsEImBTP5GsSWHMV9j2VpuNbt4g'
         },
-        body: { registration_ids: sid},
+        body: {
+            registration_ids: sid
+        },
         json: true
     };
 
@@ -45,95 +47,101 @@ function sendPush(sid) {
 }
 
 
-kue.Job.rangeByState( 'delayed', 0, 300, 'asc', function( err, jobs ) {
-  jobs.forEach( function( job ) {
-    job.remove( function(){
-      console.log( 'removed ', job.id );
+kue.Job.rangeByState('delayed', 0, 300, 'asc', function(err, jobs) {
+    jobs.forEach(function(job) {
+        job.remove(function() {
+            console.log('removed ', job.id);
+        });
     });
-  });
 });
 
- rc.getMatches()
-     .then(function(data){
+rc.getMatches()
+    .then(function(data) {
 
-         data.forEach(function(match, i){
-             state = states[match.currentState];
-             if(match.currentState === "0"){
-                    var d = new Date(parseInt(match.start));
-                    queue.create('updateMatch', match)
+        data.forEach(function(match, i) {
+            state = states[match.currentState];
+            if (match.currentState === "0") {
+                var d = new Date(parseInt(match.start));
+                queue.create('updateMatch', match)
                     .delay(d)
                     .save();
 
-                    queue.create('kickoff', match)
+                queue.create('kickoff', match)
                     .delay(d)
                     .save();
             }
-            if(state.inGame){
+            if (state.inGame) {
                 queue.create('updateMatch', match)
-                .save();
+                    .save();
             }
         });
 
-     });
+    });
 
- queue.on('job complete', function(id, result){
-    kue.Job.get(id, function(err, job){
-         if(job.type === 'updateMatch') {
-             rc.getMatch(job.data.dbid)
-             .then(
-                 function(data){
-                     var oldData = job.data;
+queue.on('job complete', function(id, result) {
+    kue.Job.get(id, function(err, job) {
+        if (job.type === 'updateMatch') {
+            rc.getMatch(job.data.dbid)
+                .then(
+                    function(data) {
+                        var oldData = job.data;
 
-                       var match = data;
-                       if(oldData.awayGoals != match.awayGoals || oldData.homeGoals != match.homeGoals){
-                           slack.json = {"text":"GOAL! : "+match.homeTeam+" "+match.homeGoals+" - "+match.awayTeam+" "+match.awayGoals};
-                           request.post(HALOURL, {form:{
-                               score:match.homeGoals+'-'+match.awayGoals,
-                               team_1:match.homeTeamShort,
-                               team_2:match.awayTeamShort,
-                           }});
-                           request(slack);
-                           queue.create('updateTopScorer')
-                           .save();
-                           rc.getSubscriptions().then(sendPush);
-                       }
-                       var state = states[match.currentState];
-                       var now = new Date().getTime();
-                       var d = new Date(parseInt(match.start)).getTime();
-                       if(state.inGame){
-                            var delay = 1*60*100;
-                            if(state.break){
-                                delay = 5*60*100;
+                        var match = data;
+                        if (oldData.awayGoals != match.awayGoals || oldData.homeGoals != match.homeGoals) {
+                            slack.json = {
+                                "text": "GOAL! : " + match.homeTeam + " " + match.homeGoals + " - " + match.awayTeam + " " + match.awayGoals
+                            };
+                            request.post(HALOURL, {
+                                form: {
+                                    score: match.homeGoals + '-' + match.awayGoals,
+                                    team_1: match.homeTeamShort,
+                                    team_2: match.awayTeamShort,
+                                }
+                            });
+                            request(slack);
+                            queue.create('updateTopScorer')
+                                .save();
+                            rc.getSubscriptions().then(sendPush);
+                        }
+                        var state = states[match.currentState];
+                        var now = new Date().getTime();
+                        var d = new Date(parseInt(match.start)).getTime();
+                        if (state.inGame) {
+                            var delay = 1 * 60 * 100;
+                            if (state.break) {
+                                delay = 5 * 60 * 100;
                             }
                             queue.create('updateMatch', match)
-                            .delay(delay)
-                            .save();
+                                .delay(delay)
+                                .save();
 
-                        } else if (match.currentState === "0" && now > d ){
+                        } else if (match.currentState === "0" && now > d) {
                             queue.create('updateMatch', match)
-                            .delay(1*60*100)
-                            .save();
-                        } else if (match.currentState === "9" ){
+                                .delay(1 * 60 * 100)
+                                .save();
+                        } else if (match.currentState === "9") {
                             queue.create('updateGroup')
-                            .save();
+                                .save();
                             queue.create('updateMatches')
-                            .save();
-                            slack.json = {"text":"Full Time : "+match.homeTeam+" "+match.homeGoals+" - "+match.awayTeam+" "+match.awayGoals};
+                                .save();
+                            slack.json = {
+                                "text": "Full Time : " + match.homeTeam + " " + match.homeGoals + " - " + match.awayTeam + " " + match.awayGoals
+                            };
                             request(slack);
                         }
 
-                });
-            }
+                    });
+        }
         job.remove();
     });
 
 
 });
 
- Object.keys(tasks.methods).forEach(function(type, i){
-     queue.process(type, function(job, done){
-       methods[type](job, done);
-     });
+Object.keys(tasks.methods).forEach(function(type, i) {
+    queue.process(type, function(job, done) {
+        methods[type](job, done);
+    });
 });
 
 ui.setup({

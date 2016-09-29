@@ -5,9 +5,9 @@ import TopScorers from './TopScorers'
 
 
 const mapStateToProps = (state) => {
-  return {
-    topScorers: state.get('app:topScorers')
-  }
+    return {
+        topScorers: state.get('app:topScorers')
+    }
 }
 
 

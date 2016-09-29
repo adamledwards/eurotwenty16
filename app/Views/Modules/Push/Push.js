@@ -28,7 +28,7 @@ class Push extends Component {
         }
     }
 
-    subscribe(serviceWorkerRegistration){
+    subscribe(serviceWorkerRegistration) {
         var this_ = this;
         const {subscribeUser} = this.props;
         this_.setState({permissionPending:true});
@@ -43,7 +43,7 @@ class Push extends Component {
             });
     }
 
-    unsubscribe(subscription){
+    unsubscribe(subscription) {
         var this_ = this
         const {unsubscribeUser} = this.props;
         return subscription.unsubscribe().then(function(sub) {
@@ -54,7 +54,7 @@ class Push extends Component {
 
     }
 
-    toggleSubscription (event){
+    toggleSubscription (event) {
         var this_ = this
         event.preventDefault()
         if ('serviceWorker' in navigator) {
@@ -76,7 +76,7 @@ class Push extends Component {
         }
     }
 
-    getSubscription(){
+    getSubscription() {
         var this_ = this
         if ('serviceWorker' in navigator) {
          console.log('Service Worker is supported');
@@ -93,7 +93,7 @@ class Push extends Component {
         });
     }
 }
-    render(){
+    render() {
          let cn = classNames({
              'container':true,
              'permissionPending':this.state.permissionPending

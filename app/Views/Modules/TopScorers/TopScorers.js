@@ -12,15 +12,14 @@ import $ from 'jquery';
 class TopScorers extends Component {
 
 
-    constructor (props){
+    constructor (props) {
         super(props);
 		this.state = {opacity:0, y:10};
 		this.getStyles = this.getStyles.bind(this);
         this.toggleTopScorers = this.toggleTopScorers.bind(this);
     }
 
-	getStyles(prevStyles){
-
+	getStyles(prevStyles) {
 		return prevStyles.map((_, i) => {
 			 if(i === 0){
 				  return {
@@ -35,7 +34,7 @@ class TopScorers extends Component {
 		})
 	}
 
-	componentDidMount(){
+	componentDidMount() {
         this.$els = $(this.refs.element).find('.js-slide');
 
 		this.$els.next().slideToggle(0,function() {
@@ -48,31 +47,32 @@ class TopScorers extends Component {
         });
     }
 
-    toggleTopScorers(event){
+    toggleTopScorers(event) {
         var $el = $(event.target);
         var topScorersUl = this.refs.topScorersUl;
         var $ul  = $(this.refs.element).find('.TopScorers-list');
         var toogleState;
-        if($el.hasClass('arrow-active')){
+
+        if($el.hasClass('arrow-active')) {
             $el.removeClass('arrow-active');
             $el.removeClass('toggle-active');
             toogleState = false;
-        }else{
+        } else {
             toogleState = true;
             $el.addClass('toggle-active');
             $el.addClass('arrow-active');
         };
         $ul.slideToggle( 300, function() {
-            if(toogleState){
+            if(toogleState) {
                 this.setState({opacity:1, y:0});
-            }else{
+            } else {
                 this.setState({opacity:0, y:10});
             }
 
         }.bind(this));
     }
 
-	render(){
+	render() {
 		const {topScorers} = this.props;
 		let scorers = topScorers.slice(0,10);
 		return (

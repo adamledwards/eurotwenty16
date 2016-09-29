@@ -9,25 +9,25 @@ import ReactDOM from 'react-dom';
 import $ from 'jquery';
 
 
-class MatchList extends Component  {
+class MatchList extends Component {
 
-    constructor (props){
+    constructor(props) {
         super(props)
         this.componentMounted = false;
     }
 
-    findIndex(matches, id){
+    findIndex(matches, id) {
         return matches.findIndex((v)=>{
             return id === v.dbid;
         });
     }
 
-    componentDidMount(){
+    componentDidMount() {
         this.setTop();
         window.addEventListener("resize", this.setTop.bind(this));
     }
 
-   setTop(){
+   setTop() {
        var styles = {}
        var offsetHeight = 0;
        var domOffsetHeight = 0;
@@ -49,7 +49,7 @@ class MatchList extends Component  {
     }
 
 
-    renderExpandBox(){
+    renderExpandBox() {
         const {params, usermatch, children, moment, calendar} = this.props;
         var day, parentRef, mdate, week,
         styles = styles = {
@@ -79,7 +79,7 @@ class MatchList extends Component  {
         return child;
     }
 
-    renderCalendar(){
+    renderCalendar() {
         const {calendar, moment, userteam,  usermatch } = this.props;
         var prevWeek, cal,
             arr = [],
@@ -111,7 +111,7 @@ class MatchList extends Component  {
 
     }
 
-    render(){
+    render() {
         const {calendar, moment, userteam, selectMatch, usermatch, params} = this.props;
         let cn = classNames({
             'MatchList': true,

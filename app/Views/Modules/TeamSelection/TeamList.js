@@ -15,14 +15,14 @@ class TeamList extends Component {
         return false;
     }
 
-    getStyles(prevStyles){
+    getStyles(prevStyles) {
         return prevStyles.map((_, i) => {
-             if(i === 0){
-                  return {
-                      opacity: spring(1, {stiffness: 390, damping: 30}),
-                      y:spring(0, {stiffness: 390, damping: 30})
-                  }
-              }
+            if(i === 0){
+                return {
+                    opacity: spring(1, {stiffness: 390, damping: 30}),
+                     y:spring(0, {stiffness: 390, damping: 30})
+                 }
+            }
             return {
                 opacity: spring(prevStyles[i - 1].opacity, {stiffness: 390, damping: 30}),
                 y:spring(prevStyles[i - 1].y, {stiffness: 390, damping: 30})
@@ -30,7 +30,7 @@ class TeamList extends Component {
         });
     }
 
-    render(){
+    render() {
         const {teams, onTeamClick, onTeamHover, offTeamHover} = this.props;
         return (
                 <div className="container">
@@ -68,12 +68,12 @@ class TeamList extends Component {
 }
 
 TeamList.propTypes = {
-  teams: PropTypes.arrayOf(PropTypes.shape({
-    dbid: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired
-  }).isRequired).isRequired,
-  onTeamClick: PropTypes.func.isRequired,
-  isModal: React.PropTypes.bool
+    teams: PropTypes.arrayOf(PropTypes.shape({
+        dbid: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired
+    }).isRequired).isRequired,
+    onTeamClick: PropTypes.func.isRequired,
+    isModal: React.PropTypes.bool
 }
 
 export default TeamList

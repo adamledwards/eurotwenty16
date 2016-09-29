@@ -12,7 +12,7 @@ import $ from 'jquery';
 import prefix from 'react-prefixr';
 
 class View extends Component {
-    constructor (props) {
+    constructor(props) {
         super(props)
         this.state = {animationDone:false};
     }
@@ -25,7 +25,7 @@ class View extends Component {
         return indx;
     }
 
-    fetchMatchIfNeeded(id){
+    fetchMatchIfNeeded(id) {
         const {matches, isMobile, fetchMatch} = this.props;
         let i = this.indexbyId(matches, id);
         let match = matches[i]
@@ -34,7 +34,7 @@ class View extends Component {
         }
     }
 
-    componentDidMount(){
+    componentDidMount() {
         const {styles,usermatch, params, parentRef, matches} = this.props;
         //Caching should be here
         var rect;
@@ -63,7 +63,7 @@ class View extends Component {
         this.fetchMatchIfNeeded(params.mdbid);
     }
 
-    componentDidUpdate(){
+    componentDidUpdate() {
         const {parentRef, usermatch} = this.props;
         if(!usermatch) {
             $('.js-slideDown').css(prefix({transform:'translateY(0px)'}));
@@ -91,14 +91,14 @@ class View extends Component {
         this.sortGoalEvents()
     }
 
-    componentWillReceiveProps(nextProps){
+    componentWillReceiveProps(nextProps) {
         const {styles, usermatch, params} = nextProps;
         if(params.mdbid !== this.props.params.mdbid ){
             this.fetchMatchIfNeeded(params.mdbid);
         }
     }
 
-    renderPlayers(match){
+    renderPlayers(match) {
         if(match.hasOwnProperty('players')){
             return (
                 <div className="col-sm-7">
@@ -162,7 +162,7 @@ class View extends Component {
         )
     }
 
-    sortGoalEvents(){
+    sortGoalEvents() {
 
         var data ={
             H:{
@@ -205,7 +205,7 @@ class View extends Component {
         return data;
     }
 
-    substitutions(){
+    substitutions() {
         var data ={
             H:{
                 data:{}
@@ -237,7 +237,7 @@ class View extends Component {
         return data;
     }
 
-    cards(){
+    cards() {
         var data ={
             H:{
                 yellow:0,
@@ -322,7 +322,7 @@ class View extends Component {
 
     }
 
-    renderDesktop(){
+    renderDesktop() {
         let playersElement = this.renderPlayers(this.match);
 
         this.renderPenaltyShootout();

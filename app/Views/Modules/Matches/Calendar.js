@@ -25,11 +25,11 @@ class Calendar extends Component {
 		return dbids.filter((id) => teams.indexOf(id) !== -1)
 	}
 
-	componentDidMount () {
+	componentDidMount() {
 
   	}
 
-	render () {
+	render() {
 		const {
 			matches,
 			moment,

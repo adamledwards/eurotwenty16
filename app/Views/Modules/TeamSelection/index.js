@@ -2,10 +2,13 @@
 
 import React from 'react';
 import TeamList from './TeamList';
-import {RECEIVE_TEAMS,
-	REQUEST_TEAMS,
-	fetchTeam,
-	selectTeam ,hoverTeam, selectMatch} from 'Actions/teams.js';
+import { RECEIVE_TEAMS,
+		REQUEST_TEAMS,
+		fetchTeam,
+		selectTeam,
+		hoverTeam,
+		selectMatch }
+		from 'Actions/teams.js';
 import { connect } from 'react-redux'
 import $ from 'jquery';
 import prefix from 'react-prefixr';

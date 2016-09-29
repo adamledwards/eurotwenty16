@@ -6,13 +6,13 @@ class View extends Component {
 
 
     indexbyId(arr, id) {
-        var indx = arr.findIndex((v)=>{
+        var indx = arr.findIndex((v) => {
             return id == v.dbid;
         });
         return indx;
     }
 
-    renderPlayers(team, pos){
+    renderPlayers(team, pos) {
         if(team.hasOwnProperty('players')){
             return team.players.filter(players => players.position == pos).map(player =>
                 <li key={player.dbid}>{player.name}</li>
@@ -20,7 +20,7 @@ class View extends Component {
         }
     }
 
-    componentDidMount(){
+    componentDidMount() {
         const {isMobile} =  this.props;
         if(!isMobile){
             return;

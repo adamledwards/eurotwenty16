@@ -7,10 +7,11 @@ const Team = ({name, dbid, team, onClick, onMouseOver, onMouseLeave, style }) =>
 		<Link to={{pathname:"/", state:{tdbid: dbid} }}  onClick={onClick} onMouseOver={onMouseOver} onMouseLeave={onMouseLeave}>{team}</Link>
 	</li>
 )
+
 Team.propTypes = {
-  onClick: PropTypes.func.isRequired,
-  name: PropTypes.string.isRequired,
-  team: PropTypes.string.isRequired
+	onClick: PropTypes.func.isRequired,
+  	name: PropTypes.string.isRequired,
+  	team: PropTypes.string.isRequired
 }
 
 export default Team

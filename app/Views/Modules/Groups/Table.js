@@ -21,7 +21,7 @@ class Table extends Component {
 		return dbids.indexOf(userteam.dbid) !== -1;
 	}
 
-    componentDidMount(){
+    componentDidMount() {
         const {isMobile} =  this.props;
         if(!isMobile){
             return;
@@ -53,7 +53,7 @@ class Table extends Component {
 
     }
 
-    componentDidUpdate(){
+    componentDidUpdate() {
         const {isMobile} =  this.props;
         if(!isMobile){
             return;

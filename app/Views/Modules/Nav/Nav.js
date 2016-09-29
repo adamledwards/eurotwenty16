@@ -24,7 +24,7 @@ class Nav extends Component {
 
  	}
 
-	getStyles(prevStyles){
+	getStyles(prevStyles) {
 		return prevStyles.map((_, i) => {
 			 if(i === 0){
 				  return {
@@ -40,7 +40,7 @@ class Nav extends Component {
 	}
 
 
-	render(){
+	render() {
 		const {userteam, hover, modal} = this.props;
 		let links = this.links;
 		let teamStyles = {};
